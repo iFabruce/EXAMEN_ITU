@@ -2,7 +2,7 @@ DROP VIEW Prix_reviens;
 DROP VIEW Total_ingredient;
 DROP VIEW Menu;
 
-DROP TABLE Marge;
+-- DROP TABLE Marge;
 DROP TABLE Addition;
 DROP TABLE Detail_commande;
 DROP TABLE Commande;
@@ -104,13 +104,13 @@ CREATE TABLE Addition (
     est_paye BOOLEAN
 );
 
-CREATE TABLE Marge (
-    id SERIAL PRIMARY KEY,
-    prix_min DOUBLE PRECISION,
-    prix_max DOUBLE PRECISION,
-    marge DOUBLE PRECISION,
-    date DATE
-);
+-- CREATE TABLE Marge (
+--     id SERIAL PRIMARY KEY,
+--     prix_min DOUBLE PRECISION,
+--     prix_max DOUBLE PRECISION,
+--     marge DOUBLE PRECISION,
+--     date DATE
+-- );
 
 CREATE VIEW Menu AS
 SELECT  p.id as id_produit, p.nom as produit, c.nom as categorie, pp.montant as prix, pp.date
