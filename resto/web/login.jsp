@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : May 26, 2022, 6:55:46 AM
+    Document   : login
+    Created on : May 26, 2022, 6:39:42 AM
     Author     : sony
 --%>
 
@@ -13,10 +13,5 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <form action="/RestoFinal/Authentification" method="POST" >
-            <input type="text" name="username">
-            <input type="text" name="password">
-            <input type="submit" >
-        </form>
     </body>
 </html>

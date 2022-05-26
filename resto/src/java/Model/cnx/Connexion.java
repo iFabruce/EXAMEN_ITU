@@ -3,24 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package component;
+package Model.cnx;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.Properties;
 
 /**
  *
- * @author Bruce
+ * @author sony
  */
-public class Connexion {
-
-     public Connection getConnection() throws Exception{
-          Class.forName("org.postgresql.Driver");
-        String url = "jdbc:postgresql://localhost:5432/resto?user=postgres&password=mdpprom13";
+public class Connexion 
+{
+    public Connection getConnection() throws Exception
+    {
+        Class.forName("org.postgresql.Driver");
+        String url = "jdbc:postgresql://localhost:5432/resto?user=postgres&password=ETU001146";
         Connection con = DriverManager.getConnection(url);
         con.setAutoCommit(false);
         return con;
     }
-    
 }
