@@ -68,7 +68,7 @@ public class Authentification extends HttpServlet
                 else
                 {
                     out.println("Coucou");
-                   RequestDispatcher rd=request.getRequestDispatcher("login.jsp");  
+                   RequestDispatcher rd=request.getRequestDispatcher("index.jsp");  
                    rd.forward(request, response);
                 }
             }catch(Exception e)

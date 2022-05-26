@@ -267,3 +267,11 @@ INSERT INTO stock_ingredient VALUES
 (DEFAULT, 3, 'sortie', 9, '2022-04-03 8:46:27'),
 (DEFAULT, 4, 'sortie', 17, '2022-04-04 7:46:27'),
 (DEFAULT, 5, 'sortie', 15, '2022-04-05 11:46:27');
+
+INSERT INTO profil VALUES
+(DEFAULT,'serveur'),
+(DEFAULT,'livreur');
+
+INSERT INTO utilisateur VALUES
+(DEFAULT,'serveur1','serveur1',1),
+(DEFAULT,'livreur1','livreur1',2);
