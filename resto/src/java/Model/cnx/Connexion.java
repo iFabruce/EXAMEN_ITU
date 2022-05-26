@@ -17,7 +17,7 @@ public class Connexion
     public Connection getConnection() throws Exception
     {
         Class.forName("org.postgresql.Driver");
-        String url = "jdbc:postgresql://localhost:5432/resto?user=postgres&password=ETU001146";
+        String url = "jdbc:postgresql://localhost:5432/resto?user=postgres&password=root";
         Connection con = DriverManager.getConnection(url);
         con.setAutoCommit(false);
         return con;
