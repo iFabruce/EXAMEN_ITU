@@ -75,7 +75,7 @@
 	<div class="row"> 
 		<div class="col-md-4"></div>
 		<div class="col-md-4" style="padding: 5%">
-			<form action="Authentification" method="get">
+			<form action="Authentification" method="post">
 				<div class="mb-3">
 				<label  class="form-label">Nom d'utilisateur</label>
 				<input type="text" class="form-control" name="username">
