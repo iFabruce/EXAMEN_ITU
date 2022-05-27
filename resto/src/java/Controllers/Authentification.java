@@ -49,7 +49,7 @@ public class Authentification extends HttpServlet
                             }
                             else if (tab[i].getId_profil() == 3)
                             {
-                                RequestDispatcher rd=request.getRequestDispatcher("Cusine.html");  
+                                RequestDispatcher rd=request.getRequestDispatcher("accueil_livreur.jsp");  
                                 rd.forward(request, response);
                             }
                             else if (tab[i].getId_profil() == 4)
@@ -68,7 +68,7 @@ public class Authentification extends HttpServlet
                 else
                 {
                     out.println("Coucou");
-                   RequestDispatcher rd=request.getRequestDispatcher("index.jsp");  
+                   RequestDispatcher rd=request.getRequestDispatcher("login.jsp");  
                    rd.forward(request, response);
                 }
             }catch(Exception e)

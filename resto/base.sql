@@ -120,3 +120,12 @@ INSERT INTO Prix_produit VALUES
 (3, 2500, '2022-03-22'),
 (4, 3500, '2022-03-22'),
 (5, 4000, '2022-03-22');
+
+INSERT INTO Profil VALUES
+(DEFAULT,'livreur1'),
+(DEFAULT,'serveur1');
+
+INSERT INTO Utilisateurs VALUES 
+(DEFAULT,'livreur1','livreur1'),
+(DEFAULT,'serveur1','serveur1');
+
