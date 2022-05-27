@@ -38,7 +38,7 @@ public class Authentification extends HttpServlet
                     {
                         out.println(tab[i].getUsername()+":"+request.getParameter("username"));
                         out.println(tab[i].getPassword()+":"+request.getParameter("password"));
-                        if(tab[i].getUsername() == request.getParameter("username") && tab[i].getPassword() == request.getParameter("password"))
+                        if(tab[i].getUsername().equals(request.getParameter("username")) && tab[i].getPassword().equals(request.getParameter("password")))
                         {
                             HttpSession session=request.getSession();  
                             session.setAttribute("idUser",tab[i].getId());
