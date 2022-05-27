@@ -62,12 +62,18 @@ public class Service {
                 id_commande[i] = res.getInt("id_commande");
                 id_point_livraison[i] = res.getInt("id_point_livraison");
                 designation[i] = res.getString("designation");
+                System.out.println(designation[i]);
                 nom_produit[i] = res.getString("nom_produit");
+                    System.out.println(nom_produit[i]);
+
                 quantite[i] = res.getInt("quantite");
                 date_commande[i] = res.getString("date_commande");
                 prix_unitaire[i] = res.getInt("prix_unitaire");
-                montant[i] = res.getInt("montant ");
+                montant[i] = res.getInt("montant");
                 i++;
+            }
+            for(int u=0;u<nom_produit.length;u++){
+                System.out.println("prodddd:"+nom_produit[u]);
             }
             a = new Addition(id_produit , id_commande , id_point_livraison , designation , nom_produit  , quantite ,   date_commande    , prix_unitaire , montant);
         }

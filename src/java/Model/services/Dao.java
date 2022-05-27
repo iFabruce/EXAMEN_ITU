@@ -83,6 +83,8 @@ public class Dao {
             double [] prix_produit = new double [res.getRow()];
             String [] categorie = new String[res.getRow()];
             String [] date = new String[res.getRow()];
+            String [] image = new String[res.getRow()];
+
             res.beforeFirst();
             while(res.next())
             {
@@ -91,9 +93,48 @@ public class Dao {
                 prix_produit [i]= res.getDouble("prix");
                 categorie [i]= res.getString("categorie");
                 date[i] = res.getString("date");
+                image[i] = res.getString("image");
+
                 i++;
             }
-            m = new Menu(id_produit,nom_produit,prix_produit, categorie,date);
+            m = new Menu(id_produit,nom_produit,prix_produit, categorie,date,image);
+        }
+        return m;
+        
+    }
+     public Menu get_menu_filtre (String nom_categorie) throws Exception
+    {
+        Utilisateur[] tab = null;
+        Menu m = null;
+        try (Connection con = new Connexion().getConnection()) {
+            String req ="select * from menu";
+            if(!nom_categorie.equals("Tous")){
+                req = "select * from menu where categorie ='"+nom_categorie+"'";
+            }
+            java.sql.Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+            ResultSet res = stmt.executeQuery(req);
+            int i=0;
+            res.last();
+            int [] id_produit = new int[res.getRow()];
+            String [] nom_produit = new String [res.getRow()];
+            double [] prix_produit = new double [res.getRow()];
+            String [] categorie = new String[res.getRow()];
+            String [] date = new String[res.getRow()];
+            String [] image = new String[res.getRow()];
+
+            res.beforeFirst();
+            while(res.next())
+            {
+                id_produit [i]= res.getInt("id_produit");
+                nom_produit [i]= res.getString("produit");
+                prix_produit [i]= res.getDouble("prix");
+                categorie [i]= res.getString("categorie");
+                date[i] = res.getString("date");
+                image[i] = res.getString("image");
+
+                i++;
+            }
+            m = new Menu(id_produit,nom_produit,prix_produit, categorie,date,image);
         }
         return m;
         

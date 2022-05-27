@@ -34,6 +34,9 @@ public class Authentification extends HttpServlet
                 {
                     out.println("Hello");
                     Utilisateur [] tab = d.find_all_user();
+                    request.setAttribute("menu",new Dao().get_menu());
+                    
+
                     for(int i = 0 ; i < tab.length; i ++)
                     {
                         out.println(tab[i].getUsername()+":"+request.getParameter("username"));
@@ -41,34 +44,34 @@ public class Authentification extends HttpServlet
                         if(tab[i].getUsername().equals(request.getParameter("username")) && tab[i].getPassword().equals(request.getParameter("password")))
                         {
                             HttpSession session=request.getSession();  
-                            session.setAttribute("idUser",tab[i].getId());
                             if(tab[i].getId_profil() == 1)
                             {
                                 out.println("Hello1");
-                                RequestDispatcher rd=request.getRequestDispatcher("accueil_serveur.jsp");  
-                                rd.forward(request, response);
+                                session.setAttribute("user","admin");
+                   
                             }
                             else if (tab[i].getId_profil() == 2)
                             {
                                 out.println("Hello2");
-                                RequestDispatcher rd=request.getRequestDispatcher("accueil_cuisine.jsp");  
-                                rd.forward(request, response);
+                                session.setAttribute("user","cuisine");
+                                
                             }
                             else if (tab[i].getId_profil() == 3)
                             {
-                                RequestDispatcher rd=request.getRequestDispatcher("accueil_livreur.jsp");  
-                                rd.forward(request, response);
+                                session.setAttribute("user","livreur");
+                                
                             }
                             else if (tab[i].getId_profil() == 4)
                             {
-                                RequestDispatcher rd=request.getRequestDispatcher("accueil_admin.jsp");  
-                                rd.forward(request, response);
+                                session.setAttribute("user","serveur");
+                                
                             }
                             else 
                             {
-                                RequestDispatcher rd=request.getRequestDispatcher("accueil_caisse.jsp");  
-                                rd.forward(request, response);
+                                session.setAttribute("user","caisse");
                             }
+                            RequestDispatcher rd=request.getRequestDispatcher("accueil.jsp");  
+                            rd.forward(request, response);
                         }
                     }
                 }

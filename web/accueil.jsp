@@ -1,5 +1,5 @@
 <%@page import="Model.serveur.Menu"%>
-<%@page import="Model.services.DAO"%>
+<%@page import="Model.services.Dao"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,19 +48,22 @@
 						<h1><a href="index.html"><img src="images/kalitao.png" style="border-left: 2px solid white"/></a></h1>
 					</div>
 					<div class="col-md-10">
-
 						<nav>
 							<ul id="menu">
-								<li  class="active"><a href="index.html">Menu</a></li>
-								<li><a href="Cuisine.html">Faire une commande</a></li>
-								<li><a href="Wine.html">Plats non livrés</a></li>
-								<li><a href="CookBook.html">Plats cuits</a></li>
-								<li><a href="CookBook.html">Addition</a></li>
+                                                            <%if(request.getSession().getAttribute("user").equals("serveur")){ %>
+								<li  class="active"><a href="accueil.jsp">Menu</a></li>
+								<li><a href="ajout_commande.jsp">Faire une commande</a></li>
+								<li><a href="liste_plats_non_livrés.jsp">Plats non livrés</a></li>
+								<li><a href="liste_plats_cuits.jsp">Plats cuits</a></li>
+								<li><a href="Serveur">Addition</a></li>
+                                                             <%}%>
+                                                            <%if(request.getSession().getAttribute("user").equals("livreur")){ %>
+								<li  class="active"><a href="index.html">Plat(s) à livrer</a></li>
 								
-								
-								
+                                                             <%}%>
 							</ul>
 						</nav>
+                                                
 					</div>
 				</div>
 			</header>
@@ -73,33 +76,40 @@
 						<div class="box">
 							<div>
 								<h2 class="letter_spacing">Nos <span>Catégories </span></h2>
-								<select name="" id="" class="form-select">
-									<option value="">a</option>
-									<option value="">b</option>
+                                                                <form action="FiltreMenu" method="get">
+                                                                    
+								<select name="categorie" id="" class="form-select">
+									<option value="Tous">Tous</option>
+									<option value="Entrée">Entrée</option>
+									<option value="Plat de résistance">Plat de résistance</option>
+                                                                        <option value="Dessert">Dessert</option>
+
 
 								</select>
 								<br>
-								<a href="#" class="button1">Rechercher</a>
+                                                                <button class="btn btn bg-light">Rechercher</button>
 								
-								
+                                                            </form>
+
 							</div>
 						</div>
 					</div></section>
-					<section class="col-1-3"><div class="wrap-col">
+					
 						<% 
-                                                    DAO dao = new DAO();
-                                                    for(int i=0;i<dao.get_menu().getId_produit().length;i++){
+                                                    Menu menu = (Menu)request.getAttribute("menu");
+                                                    for(int i=0;i<menu.getId_produit().length;i++){
                                                 %>
+                                                <section class="col-1-3"><div class="wrap-col">
                                                     <div class="box">
                                                             <div>
-                                                                    <h2>Nos <span>Menu</span></h2>
-                                                                    <figure><img src="images/page2_img1.jpg" alt="" ></figure>
-                                                                    <p class="pad_bot1">Neque porro quisquam est, qui dolor- em ipsum qudolor sitamet consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt.</p>
-                                                                    <a href="#" class="button1">Read More</a>
+                                                                    <h2><span><%=menu.getNom_produit()[i]%></span></h2>
+                                                                    <figure><img src="images/<%=menu.getImage()[i]%>" alt="" ></figure>
+                                                                    <a href="#" class="button1">Commander</a>
                                                             </div>
                                                     </div>
+                                                        					</div></section>
+
                                                 <% }%>
-					</div></section>
 				
 					
 

@@ -49,11 +49,11 @@
 
 						<nav>
 							<ul id="menu">
-								<li  class="active"><a href="index.html">Menu</a></li>
-								<li><a href="Cuisine.html">Faire une commande</a></li>
-								<li><a href="Wine.html">Plats non livrÃ©s</a></li>
-								<li><a href="CookBook.html">Plats cuits</a></li>
-								<li><a href="CookBook.html">Addition</a></li>
+								<li  class="active"><a href="accueil.jsp">Menu</a></li>
+								<li><a href="ajout_commande.jsp">Faire une commande</a></li>
+								<li><a href="liste_plats_non_livrés.jsp">Plats non livrés</a></li>
+								<li><a href="liste_plats_cuits.jsp">Plats cuits</a></li>
+								<li><a href="addition.jsp">Addition</a></li>
 							</ul>
 						</nav>
 					</div>

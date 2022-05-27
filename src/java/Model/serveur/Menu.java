@@ -14,16 +14,27 @@ public class Menu {
     private String [] nom_produit;
     private double [] prix_produit;
     private String [] categorie;
+    private String [] date;
+    private String[] image;
 
-    public Menu(int[] id_produit, String[] nom_produit, double[] prix_produit, String[] categorie, String[] date) {
+    public Menu(int[] id_produit, String[] nom_produit, double[] prix_produit, String[] categorie, String[] date, String[] image) {
         this.id_produit = id_produit;
         this.nom_produit = nom_produit;
         this.prix_produit = prix_produit;
         this.categorie = categorie;
         this.date = date;
+        this.image = image;
     }
-    private String [] date;
 
+    public String[] getImage() {
+        return image;
+    }
+
+    public void setImage(String[] image) {
+        this.image = image;
+    }
+    
+    
     public Menu(int[] id_produit, String[] nom_produit, double[] prix_produit, String[] categorie) {
         this.id_produit = id_produit;
         this.nom_produit = nom_produit;

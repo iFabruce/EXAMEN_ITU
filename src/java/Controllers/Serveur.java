@@ -10,6 +10,7 @@ import Model.serveur.Addition;
 import Model.services.Service;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -36,7 +37,18 @@ public class Serveur extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            Addition a = addition_table(request.getParameter("table"));
+            out.println("a");
+            String table = "table 1";
+                        out.println("a");
+
+            if(request.getParameter("table") != null){
+                table = request.getParameter("table");
+            }
+                        out.println("a");
+            out.println(table);
+            Addition a = addition_table(table);
+                        out.println("b");
+
             request.setAttribute("addition", a);
             RequestDispatcher rd=request.getRequestDispatcher("addition.jsp");  
             rd.forward(request, response);
@@ -45,16 +57,26 @@ public class Serveur extends HttpServlet {
     
     public Addition addition_table(String design) throws Exception
     {
+        try{
+            
+      
         Service s = new Service();
         Addition a = s.get_addition();
-        int cpt = 0 ; 
-        for(int i = 0 ; i < a.getDate_commande().length ; i ++)
+        int cpt = 0 ;
+        ArrayList<Integer> index =  new ArrayList<>();
+        for(int i = 0 ; i < a.getDesignation().length ; i ++)
         {
-            if(a.getDesignation().equals(design))
+              System.out.println("design:"+design);
+              System.out.println("table:"+a.getDesignation()[i]);
+
+            if(a.getDesignation()[i].equals(design))
             {
                 cpt++;
+                index.add(i);
             }
         }
+                      System.out.println("aa");
+
         int [] id_produit = new int[cpt];
         int [] id_commande = new int[cpt];
         int [] id_point_livraison = new int[cpt]; 
@@ -64,23 +86,36 @@ public class Serveur extends HttpServlet {
         String []  date_commande = new String[cpt] ;
         int [] prix_unitaire = new int[cpt];
         int [] montant = new int[cpt];
-        for(int i = 0 ; i < a.getDate_commande().length ; i ++)
+                System.out.println("bbb");
+
+        for(int i = 0 ; i < cpt ; i ++)
         {
-            if(a.getDesignation()[i].equals(design))
+            if(a.getDesignation()[index.get(i)].equals(design))
             {
-                id_produit [i]= a.getId_produit()[i];
-                id_commande [i] = a.getId_commande()[i];
-                id_point_livraison [i] = a.getId_point_livraison()[i]; 
-                designation [i] = a.getDesignation()[i] ;
-                nom_produit[i] = a.getNom_produit()[i] ;
-                quantite[i] = a.getQuantite()[i] ;
-                date_commande[i] = a.getDate_commande()[i] ;
-                prix_unitaire[i] = a.getPrix_unitaire()[i];
-                montant[i] = a.getMontant()[i];
+                System.out.println("tafiditra");
+                id_produit [i]= a.getId_produit()[index.get(i)];
+                id_commande [i] = a.getId_commande()[index.get(i)];
+                id_point_livraison [i] = a.getId_point_livraison()[index.get(i)]; 
+                designation [i] = a.getDesignation()[index.get(i)] ;
+                nom_produit[i] = a.getNom_produit()[index.get(i)] ;
+                System.out.println( a.getNom_produit()[index.get(i)]);
+                quantite[i] = a.getQuantite()[index.get(i)] ;
+                date_commande[i] = a.getDate_commande()[index.get(i)] ;
+                prix_unitaire[i] = a.getPrix_unitaire()[index.get(i)];
+                montant[i] = a.getMontant()[index.get(i)];
             }
         }
+        System.out.println("xxx");
+ for(int u=0;u<nom_produit.length;u++){
+                System.out.println("tttttt:"+nom_produit[u]);
+            }
         a = new Addition(id_produit , id_commande , id_point_livraison , designation , nom_produit  , quantite ,   date_commande    , prix_unitaire , montant);
         return a;
+          }
+        catch(Exception ex){
+            System.out.println(ex);
+        }
+        return null;
     }
             
 

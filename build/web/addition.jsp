@@ -1,3 +1,4 @@
+<%@page import="Model.serveur.Addition"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,11 +50,11 @@
 
 						<nav>
 							<ul id="menu">
-								<li  class="active"><a href="index.html">Menu</a></li>
-								<li><a href="Cuisine.html">Faire une commande</a></li>
-								<li><a href="Wine.html">Plats non livrÃ©s</a></li>
-								<li><a href="CookBook.html">Plats cuits</a></li>
-								<li><a href="CookBook.html">Addition</a></li>
+								<li  class="active"><a href="accueil.jsp">Addition</a></li>
+								<li><a href="ajout_commande.jsp">Faire une commande</a></li>
+								<li><a href="liste_plats_non_livrés.jsp">Plats non livrés</a></li>
+								<li><a href="liste_plats_cuits.jsp">Plats cuits</a></li>
+								<li><a href="addition.jsp">Addition</a></li>
 								
 								
 								
@@ -70,17 +71,21 @@
 					<section class="col-1-3"><div class="wrap-col">
 						<div class="box">
 							<div>
+                                                             <form action="Serveur" method="get">
 								<h2 class="letter_spacing"><span>Table</span></h2>
-								<select name="" id="" class="form-select">
-									<option value="">a</option>
-									<option value="">b</option>
-
+								<select name="table" id="" class="form-select">
+									<option value="table 1">table 1</option>
+                                                                        <option value="table 2">table 2</option>
+                                                                        <option value="table 3">table 3</option>
+                                                                        <option value="table 4">table 4</option>
+                                                                        <option value="table 5">table 5</option>
+                                                                        <option value="table 6">table 6</option>
 								</select>
 								
 								<br>
+                                                                <button class="btn btn bg-light">Afficher</button>
 
-								<a href="#" class="button1">Rechercher</a>
-								
+							 </form>	
 								
 							</div>
 						</div>
@@ -88,26 +93,33 @@
 					<section class="col-1-2"><div class="wrap-col">
 						<div class="box">
 							<div>
-								<h2><span>Plat(s) </span>cuit(s)</h2>
+								<h2><span>Addition</span></h2>
 								<table class="table table-dark table-striped">
 									<thead>
 									  <tr>
 										<th scope="col">Plat</th>
 										<th scope="col" >Prix</th>
-										<th scope="col">QuantitÃ©</th>
+										<th scope="col">Quantité</th>
 									  </tr>
 									</thead>
 									<tbody>
+                                                                            <% 
+                                                                                double total=0;
+                                                                                Addition add = (Addition)request.getAttribute("addition");
+                                                                                for(int i=0;i<add.getPrix_unitaire().length;i++){
+                                                                            %>
 									  <tr>
-										<th scope="row">Vary</th>
-										<td >20 000 Ar</td>
-										<td >5</td>
+										<th scope="row"><%=add.getNom_produit()[i]%></th>
+										<td ><%=add.getQuantite()[i]%></td>
+										<td ><%=add.getPrix_unitaire()[i]%></td>
 									  </tr>
-									 
+                                                                          
+									  <%   total+= add.getQuantite()[i] * add.getPrix_unitaire()[i]; }
+                                                                            %>
 									</tbody>
 
 								  </table>
-								  <h2><span>Total: </span>100 000 Ar</h2>
+								  <h2><span>Total: </span><%=total%></h2>
 
 							</div>
 							
