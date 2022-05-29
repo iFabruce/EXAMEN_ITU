@@ -5,8 +5,11 @@
  */
 package Main;
 
+import Model.livreur.Plat_commander;
 import Model.serveur.Menu;
 import Model.services.Dao;
+import Model.serveur.Last_detail_commande;
+import Model.services.Service;
 import Model.utilisateur.Utilisateur;
 import java.sql.Connection;
 import java.util.Calendar;
@@ -15,7 +18,8 @@ import java.util.Calendar;
  *
  * @author sony
  */
-public class test {
+public class test 
+{
     
     public static void main(String [] args) throws Exception
     {
@@ -27,5 +31,20 @@ public class test {
             }*/
             Menu m = d.get_menu();
             System.out.println(m.getDate()[0]);
+            
+            Service s = new Service();
+            Last_detail_commande [] tab = s.get_last_detail();
+            for(int i = 0 ; i < tab.length ; i ++)
+            {
+                System.out.println(tab[i].getNom());
+            }
+            
+            System.out.println(s.get_last_commande());
+            
+            /*Plat_commander [] tab = d.get_liste_plats_commander("");
+            for(int i = 0 ; i < tab.length ; i ++)
+            {
+                System.out.println(tab[i].getNom_produit());
+            }*/
     }
 }

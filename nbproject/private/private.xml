@@ -3,12 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Bruce/GitHub/Resto/src/java/Model/services/Dao.java</file>
-            <file>file:/D:/Bruce/GitHub/Resto/web/css/bootstrap-grid.css</file>
-            <file>file:/D:/Bruce/GitHub/Resto/src/java/Model/cnx/Connexion.java</file>
-            <file>file:/D:/Bruce/GitHub/Resto/web/login.jsp</file>
-            <file>file:/D:/Bruce/GitHub/Resto/web/accueil.jsp</file>
+            <file>file:/D:/Bruce/GitHub/Resto/src/java/Controllers/FiltreMenu.java</file>
+            <file>file:/D:/Bruce/GitHub/Resto/src/java/Controllers/AjoutDetailCommande.java</file>
+            <file>file:/D:/Bruce/GitHub/Resto/src/java/Model/services/Service.java</file>
+            <file>file:/D:/Bruce/GitHub/Resto/src/java/Controllers/NouveauCommande.java</file>
+            <file>file:/D:/Bruce/GitHub/Resto/src/java/Model/serveur/Last_detail_commande.java</file>
             <file>file:/D:/Bruce/GitHub/Resto/src/java/Controllers/Authentification.java</file>
+            <file>file:/D:/Bruce/GitHub/Resto/src/java/Controllers/Livreur.java</file>
+            <file>file:/D:/Bruce/GitHub/Resto/src/java/Controllers/VersAjoutCommande.java</file>
+            <file>file:/D:/Bruce/GitHub/Resto/web/addition.jsp</file>
+            <file>file:/D:/Bruce/GitHub/Resto/src/java/Controllers/Serveur.java</file>
+            <file>file:/D:/Bruce/GitHub/Resto/src/java/Controllers/SupprimerDetailCommande.java</file>
+            <file>file:/D:/Bruce/GitHub/Resto/src/java/Model/cnx/Connexion.java</file>
+            <file>file:/D:/Bruce/GitHub/Resto/web/ajout_commande.jsp</file>
+            <file>file:/D:/Bruce/GitHub/Resto/web/accueil.jsp</file>
         </group>
     </open-files>
 </project-private>

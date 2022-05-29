@@ -16,6 +16,22 @@
         <servlet-name>FiltreMenu</servlet-name>
         <servlet-class>Controllers.FiltreMenu</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NouveauCommande</servlet-name>
+        <servlet-class>Controllers.NouveauCommande</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AjoutDetailCommande</servlet-name>
+        <servlet-class>Controllers.AjoutDetailCommande</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VersAjoutCommande</servlet-name>
+        <servlet-class>Controllers.VersAjoutCommande</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SupprimerDetailCommande</servlet-name>
+        <servlet-class>Controllers.SupprimerDetailCommande</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Authentification</servlet-name>
         <url-pattern>/Authentification</url-pattern>
@@ -31,6 +47,22 @@
     <servlet-mapping>
         <servlet-name>FiltreMenu</servlet-name>
         <url-pattern>/FiltreMenu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NouveauCommande</servlet-name>
+        <url-pattern>/NouveauCommande</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AjoutDetailCommande</servlet-name>
+        <url-pattern>/AjoutDetailCommande</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VersAjoutCommande</servlet-name>
+        <url-pattern>/VersAjoutCommande</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SupprimerDetailCommande</servlet-name>
+        <url-pattern>/SupprimerDetailCommande</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
