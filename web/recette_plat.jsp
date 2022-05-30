@@ -1,8 +1,8 @@
-<%@page import="Model.serveur.Addition"%>
+<%@page import="Model.livreur.Plat_commander"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Addition</title>
+<title>Plats cuits</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
@@ -23,6 +23,7 @@
 <script type="text/javascript" src="js/Forum_400.font.js"></script>
 <script type="text/javascript" src="js/atooltip.jquery.js"></script> 
  <script type="text/javascript" src="js/css3-mediaqueries.js"></script>
+
 <!--[if lt IE 9]>
 	<script type="text/javascript" src="js/html5.js"></script>
 	<style type="text/css">
@@ -50,17 +51,7 @@
 
 						<nav>
 							<ul id="menu">
-                                                            <%if(request.getSession().getAttribute("user").equals("serveur")){ %>
-								<li  class="active"><a href="VersAccueil">Menu</a></li>
-								<li><a href="VersAjoutCommande">Faire une commande</a></li>
-								<li><a href="PlatsNonLivres">Plats non livrés</a></li>
-								<li><a href="PlatsCuits">Plats cuits</a></li>
-								<li><a href="Serveur">Addition</a></li>
-                                                             <%}%>
-                                                            <%if(request.getSession().getAttribute("user").equals("livreur")){ %>
-								<li  class="active"><a href="index.html">Plat(s) à livrer</a></li>
-								
-                                                             <%}%>
+                                                          
 							</ul>
 						</nav>
 					</div>
@@ -71,58 +62,51 @@
 <!-- content -->
 			<article id="content">
 				<div class="wrap">
-					<section class="col-1-3"><div class="wrap-col">
+                                            <section class="col-1-3"><div class="wrap-col">
 						<div class="box">
+                                                    <form action="PlatsCuits" method="get">
 							<div>
-                                                             <form action="Serveur" method="get">
-								<h2 class="letter_spacing"><span>Table</span></h2>
-								<select name="table" id="" class="form-select">
-									<option value="table 1">table 1</option>
-                                                                        <option value="table 2">table 2</option>
-                                                                        <option value="table 3">table 3</option>
-                                                                        <option value="table 4">table 4</option>
-                                                                        <option value="table 5">table 5</option>
-                                                                        <option value="table 6">table 6</option>
-								</select>
-								
-								<br>
-                                                                <button class="btn btn bg-light">Afficher</button>
+								<h2 class="letter_spacing"><span>Plat</span></h2>
+                                                                    <select name="plat"  class="form-select">
+                                                                            <option value=""> </option>
+                                                                           
 
-							 </form>	
+                                                                    </select>
+								<br>
+
+								<button class="btn btn-warning">Voir recette</button>
+								
 								
 							</div>
+                                                    </form>
 						</div>
 					</div></section>
 					<section class="col-1-2"><div class="wrap-col">
 						<div class="box">
 							<div>
-								<h2><span>Addition</span></h2>
+								<h2><span>Recette </span>Plat(s)</h2>
 								<table class="table table-dark table-striped">
 									<thead>
 									  <tr>
-										<th scope="col">Plat</th>
-										<th scope="col" >Prix</th>
+										<th scope="col">Ingredient</th>
 										<th scope="col">Quantité</th>
+										
 									  </tr>
 									</thead>
 									<tbody>
-                                                                            <% 
-                                                                                double total=0;
-                                                                                Addition add = (Addition)request.getAttribute("addition");
-                                                                                for(int i=0;i<add.getPrix_unitaire().length;i++){
-                                                                            %>
+                                              
 									  <tr>
-										<th scope="row"><%=add.getNom_produit()[i]%></th>
-										<td ><%=add.getQuantite()[i]%></td>
-										<td ><%=add.getPrix_unitaire()[i]%></td>
+										
+										<td ></td>
+                                                                        <td ></td>
+
+										
 									  </tr>
-                                                                          
-									  <%   total+= add.getQuantite()[i] * add.getPrix_unitaire()[i]; }
-                                                                            %>
+							
+							 
 									</tbody>
 
 								  </table>
-								  <h2><span>Total: </span><%=total%></h2>
 
 							</div>
 							
@@ -146,7 +130,7 @@
 				<div class="wrapper">
 					<section class="col-2-3"><div class="wrap-col">
 						<h3>Contact: <span>034 04 145 85</span></h3>
-						Ouvert ï¿½ partir de:  <a rel="nofollow" href="http://www.TemplateMonster.com/" target="_blank">8h ï¿½ 20h</a> | <a href="https://www.zerotheme.com" title="free website templates">Andoharanofotsy</a>
+						Ouvert à partir de:  <a rel="nofollow" href="http://www.TemplateMonster.com/" target="_blank">8h - 20h</a> | <a href="https://www.zerotheme.com" title="free website templates">Andoharanofotsy</a>
 					</div></section>
 					<section class="col-1-3"><div class="wrap-col">
 						<h3>Nous-suivre:</h3>

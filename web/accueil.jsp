@@ -51,10 +51,10 @@
 						<nav>
 							<ul id="menu">
                                                             <%if(request.getSession().getAttribute("user").equals("serveur")){ %>
-								<li  class="active"><a href="accueil.jsp">Menu</a></li>
-								<li><a href="ajout_commande.jsp">Faire une commande</a></li>
-								<li><a href="liste_plats_non_livrés.jsp">Plats non livrés</a></li>
-								<li><a href="liste_plats_cuits.jsp">Plats cuits</a></li>
+								<li  class="active"><a href="VersAccueil">Menu</a></li>
+								<li><a href="VersAjoutCommande">Faire une commande</a></li>
+								<li><a href="PlatsNonLivres">Plats non livrés</a></li>
+								<li><a href="PlatsCuits">Plats cuits</a></li>
 								<li><a href="Serveur">Addition</a></li>
                                                              <%}%>
                                                             <%if(request.getSession().getAttribute("user").equals("livreur")){ %>

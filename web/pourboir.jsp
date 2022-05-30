@@ -1,3 +1,4 @@
+<%@page import="Model.admin.Pourboire"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,13 +71,13 @@
 					<section class="col-1-3"><div class="wrap-col">
 						<div class="box">
 							<div>
-                                                            <form action="">
+                                                            <form action="Pourboir" method="get">
 								<h2 class="letter_spacing"><span>Date Minimum</span></h2>
 								<input type="date" name="date1" class="form-control">
                                                                 <h2 class="letter_spacing"><span>Date Maximum</span></h2>
 								<input type="date" name="date2" class="form-control">
 								<br>
-								<a href="#" class="button1">Afficher</a>
+								<button class="btn btn-warning">Afficher</button>
                                                             </form>
 								
 							</div>
@@ -85,26 +86,27 @@
 					<section class="col-1-2"><div class="wrap-col">
 						<div class="box">
 							<div>
-								<h2><span>Plat(s) </span>cuit(s)</h2>
+								<h2><span>Pourboir</span></h2>
 								<table class="table table-dark table-striped">
 									<thead>
+                                              
 									  <tr>
-										<th scope="col">Plat</th>
-										<th scope="col">Quantité</th>
-										<th scope="col" >Table</th>
-										<th scope="col" >Etat</th>
-
+										<th scope="col">Serveur</th>
+										<th scope="col">Montant</th>
 									  </tr>
 									</thead>
 									<tbody>
+                                                <% 
+                                                    Pourboire[] pb = (Pourboire[])request.getAttribute("pourboir");
+                                                    for(int i=0;i<pb.length;i++){
+                                                %>
 									  <tr>
-										<th scope="row">Vary</th>
-										<td >2</td>
-										<td >5</td>
-										<td >LivrÃ©</td>
-
+										<th scope="row"><%=pb[i].getUsername()%></th>
+										<td ><%=pb[i].getMontant()%></td>
 									  </tr>
-									 
+							  <% 
+                                                }
+                                                %>		 
 									</tbody>
 
 								  </table>

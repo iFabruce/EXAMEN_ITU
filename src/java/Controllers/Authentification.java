@@ -48,6 +48,8 @@ public class Authentification extends HttpServlet
                             {
                                 out.println("Hello1");
                                 session.setAttribute("user","admin");
+                                session.setAttribute("id_user",tab[i].getId());
+
                    
                             }
                             else if (tab[i].getId_profil() == 2)
@@ -64,6 +66,9 @@ public class Authentification extends HttpServlet
                             else if (tab[i].getId_profil() == 4)
                             {
                                 session.setAttribute("user","serveur");
+                                session.setAttribute("id_user",tab[i].getId());
+
+                                
                                 
                             }
                             else 

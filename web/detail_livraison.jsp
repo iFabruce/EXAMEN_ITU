@@ -71,7 +71,7 @@
 					<section class="col-1-1"><div class="wrap-col">
 						<div class="box">
 							<div>
-								<h2><span>DÃ©tails </span>Livraison(s)</h2>
+								<h2><span>Détails </span>Livraison(s)</h2>
 								<table class="table table-dark table-striped">
 									<thead>
 									  <tr>

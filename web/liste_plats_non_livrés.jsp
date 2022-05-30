@@ -1,3 +1,4 @@
+<%@page import="Model.livreur.Plat_commander"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +23,7 @@
 <script type="text/javascript" src="js/Forum_400.font.js"></script>
 <script type="text/javascript" src="js/atooltip.jquery.js"></script> 
  <script type="text/javascript" src="js/css3-mediaqueries.js"></script>
+
 <!--[if lt IE 9]>
 	<script type="text/javascript" src="js/html5.js"></script>
 	<style type="text/css">
@@ -49,13 +51,17 @@
 
 						<nav>
 							<ul id="menu">
-								<li  class="active"><a href="accueil.jsp">Menu</a></li>
-								<li><a href="ajout_commande.jsp">Faire une commande</a></li>
-								<li><a href="liste_plats_non_livrés.jsp">Plats non livrés</a></li>
-								<li><a href="liste_plats_cuits.jsp">Plats cuits</a></li>
-								<li><a href="addition.jsp">Addition</a></li>
+                                                            <%if(request.getSession().getAttribute("user").equals("serveur")){ %>
+								<li  class="active"><a href="VersAccueil">Menu</a></li>
+								<li><a href="VersAjoutCommande">Faire une commande</a></li>
+								<li><a href="PlatsNonLivres">Plats non livrés</a></li>
+								<li><a href="PlatsCuits">Plats cuits</a></li>
+								<li><a href="Serveur">Addition</a></li>
+                                                             <%}%>
+                                                            <%if(request.getSession().getAttribute("user").equals("livreur")){ %>
+								<li  class="active"><a href="index.html">Plat(s) à livrer</a></li>
 								
-								
+                                                             <%}%>
 							</ul>
 						</nav>
 					</div>
@@ -68,41 +74,48 @@
 				<div class="wrap">
 					<section class="col-1-3"><div class="wrap-col">
 						<div class="box">
+                                                    <form action="PlatsNonLivres" method="get">
 							<div>
-								<h2 class="letter_spacing"><span>Table</span></h2>
-								<select name="" id="" class="form-select">
-									<option value="">a</option>
-									<option value="">b</option>
-
-								</select>
+								<h2 class="letter_spacing"><span>Date</span></h2>
 								
+                                                                <input type="date" class="form-control" name="date"/>
 								<br>
 
-								<a href="#" class="button1">Rechercher</a>
+								<button class="btn btn-warning">Rechercher</button>
 								
 								
 							</div>
+                                                    </form>
 						</div>
 					</div></section>
 					<section class="col-1-2"><div class="wrap-col">
 						<div class="box">
 							<div>
-								<h2><span>Plat(s) </span>non livrÃ©(s)</h2>
+								<h2><span>Plat(s) </span>non livré(s)</h2>
 								<table class="table table-dark table-striped">
 									<thead>
 									  <tr>
 										<th scope="col">Plat</th>
-										<th scope="col">QuantitÃ©</th>
-										<th scope="col" >Table</th>
+										<th scope="col">Lieu</th>
+										<th scope="col" >Date</th>
 									  </tr>
 									</thead>
 									<tbody>
+                                                                            
+						<% 
+                                                    Plat_commander[] pnl = (Plat_commander[])request.getAttribute("pnl");
+                                                    for(int i=0;i<pnl.length;i++){
+                                                %>
 									  <tr>
-										<th scope="row">Vary</th>
-										<td >2</td>
-										<td >5</td>
+										
+										<td ><%=pnl[i].getNom_produit()%></td>
+										<td ><%=pnl[i].getLieu()%></td>
+                                                                                <td ><%=pnl[i].getDate()%></td>
 									  </tr>
-									 
+							
+						<% 
+                                                   }
+                                                %>		 
 									</tbody>
 
 								  </table>
@@ -129,7 +142,7 @@
 				<div class="wrapper">
 					<section class="col-2-3"><div class="wrap-col">
 						<h3>Contact: <span>034 04 145 85</span></h3>
-						Ouvert ï¿½ partir de:  <a rel="nofollow" href="http://www.TemplateMonster.com/" target="_blank">8h ï¿½ 20h</a> | <a href="https://www.zerotheme.com" title="free website templates">Andoharanofotsy</a>
+						Ouvert à partir de:  <a rel="nofollow" href="http://www.TemplateMonster.com/" target="_blank">8h - 20h</a> | <a href="https://www.zerotheme.com" title="free website templates">Andoharanofotsy</a>
 					</div></section>
 					<section class="col-1-3"><div class="wrap-col">
 						<h3>Nous-suivre:</h3>

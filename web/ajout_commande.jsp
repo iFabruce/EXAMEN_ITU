@@ -1,3 +1,6 @@
+<%@page import="Model.services.Dao"%>
+<%@page import="Model.serveur.Last_detail_commande"%>
+<%@page import="Model.serveur.Menu"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,14 +52,17 @@
 
 						<nav>
 							<ul id="menu">
-								<li  class="active"><a href="accueil.jsp">Menu</a></li>
-								<li><a href="ajout_commande.jsp">Faire une commande</a></li>
-								<li><a href="liste_plats_non_livrés.jsp">Plats non livrés</a></li>
-								<li><a href="liste_plats_cuits.jsp">Plats cuits</a></li>
-								<li><a href="addition.jsp">Addition</a></li>
+                                                            <%if(request.getSession().getAttribute("user").equals("serveur")){ %>
+								<li  class="active"><a href="VersAccueil">Menu</a></li>
+								<li><a href="VersAjoutCommande">Faire une commande</a></li>
+								<li><a href="PlatsNonLivres">Plats non livrés</a></li>
+								<li><a href="PlatsCuits">Plats cuits</a></li>
+								<li><a href="Serveur">Addition</a></li>
+                                                             <%}%>
+                                                            <%if(request.getSession().getAttribute("user").equals("livreur")){ %>
+								<li  class="active"><a href="index.html">Plat(s) à livrer</a></li>
 								
-								
-								
+                                                             <%}%>
 							</ul>
 						</nav>
 					</div>
@@ -70,54 +76,73 @@
 					<section class="col-1-3"><div class="wrap-col">
 						<div class="box">
 							<div>
-								<h2 class="letter_spacing"><span>Table</span></h2>
-								<select name="" id="" class="form-select">
-									<option value="">a</option>
-									<option value="">b</option>
-
-								</select>
+							 <form action="AjoutDetailCommande" method="post">	
 								<h2 class="letter_spacing"><span>Plat </span></h2>
 
-								<select name="" id="" class="form-select">
-									<option value="">a</option>
-									<option value="">b</option>
-
+                                                                 
+								<select name="id_produit" id="" class="form-select">
+								<% 
+                                                                    Menu menu = new Dao().get_menu();
+                                                                    for(int i=0;i<menu.getId_produit().length;i++){
+                                                                %>	
+                                                                    <option value="<%=menu.getId_produit()[i]%>"><%=menu.getNom_produit()[i]%></option>
+                                                                <% }%>
 								</select>
-								<h2 class="letter_spacing"><span>QuantitÃ© </span></h2>
+								<h2 class="letter_spacing"><span>Quantité </span></h2>
 
-								<input type="number" class="form-control">
+								<input type="number" name="quantite" class="form-control">
 								<br>
+						<button class="btn btn" style="background: darkred;color:white">Ajouter</button>
 
-								<a href="#" class="button1">Ajouter</a>
-								
+							 </form>	
 								
 							</div>
 						</div>
 					</div></section>
 					<section class="col-1-2"><div class="wrap-col">
+                                                <form action="NouveauCommande" method="post">
+                                                    <h2 class="letter_spacing"><span>Table</span></h2>
+                                                                    <select name="table"  class="form-select">
+                                                                            <option value="1">table 1</option>
+                                                                            <option value="2">table 2</option>
+                                                                            <option value="3">table 3</option>
+                                                                            <option value="4">table 4</option>
+                                                                            <option value="5">table 5</option>
+                                                                            <option value="6">table 6</option>
+
+                                                                    </select>
+                                                    </br>
+                                          <button class="btn btn-warning">Nouveau commande</button>
+<hr>                                                        
+                                                </form>
 						<div class="box">
 							<div>
+                                                            
 								<h2>Mes <span>Commandes</span></h2>
+                                                                
 								<table class="table table-dark table-striped">
 									<thead>
 									  <tr>
 										<th scope="col">Plat</th>
-										<th scope="col">QuantitÃ©</th>
 										<th scope="col" >Action</th>
 									  </tr>
 									</thead>
 									<tbody>
+                                                                            <% 
+                                                                                Last_detail_commande[] detail = (Last_detail_commande[])request.getAttribute("detail");
+                                                                                for(int i=0;i<detail.length;i++){
+                                                                            %>
 									  <tr>
-										<th scope="row">Vary</th>
-										<td >2</td>
-										<td><a href=""><button class="btn btn-danger">X</button></a></td>
+										<th scope="row"> <%=detail[i].getNom()%></th>
+										<td><a href="SupprimerDetailCommande?id_detail=<%=detail[i].getId()%>"><button class="btn btn-danger">X</button></a></td>
 										
 									  </tr>
-									 
+									  <% 
+                                                                              }
+                                                                            %>
 									</tbody>
 
 								  </table>
-						<button class="btn btn-success">Valider</button>
 
 							</div>
 							

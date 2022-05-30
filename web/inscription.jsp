@@ -1,8 +1,7 @@
-<%@page import="Model.serveur.Addition"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Addition</title>
+<title>Pourboir</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
@@ -50,17 +49,14 @@
 
 						<nav>
 							<ul id="menu">
-                                                            <%if(request.getSession().getAttribute("user").equals("serveur")){ %>
-								<li  class="active"><a href="VersAccueil">Menu</a></li>
-								<li><a href="VersAjoutCommande">Faire une commande</a></li>
-								<li><a href="PlatsNonLivres">Plats non livrés</a></li>
-								<li><a href="PlatsCuits">Plats cuits</a></li>
-								<li><a href="Serveur">Addition</a></li>
-                                                             <%}%>
-                                                            <%if(request.getSession().getAttribute("user").equals("livreur")){ %>
-								<li  class="active"><a href="index.html">Plat(s) à livrer</a></li>
+								<li  class="active"><a href="accueil.jsp">Menu</a></li>
+								<li><a href="ajout_commande.jsp">Faire une commande</a></li>
+								<li><a href="liste_plats_non_livrés.jsp">Plats non livrés</a></li>
+								<li><a href="liste_plats_cuits.jsp">Plats cuits</a></li>
+								<li><a href="addition.jsp">Addition</a></li>
 								
-                                                             <%}%>
+								
+								
 							</ul>
 						</nav>
 					</div>
@@ -71,63 +67,31 @@
 <!-- content -->
 			<article id="content">
 				<div class="wrap">
-					<section class="col-1-3"><div class="wrap-col">
-						<div class="box">
-							<div>
-                                                             <form action="Serveur" method="get">
-								<h2 class="letter_spacing"><span>Table</span></h2>
-								<select name="table" id="" class="form-select">
-									<option value="table 1">table 1</option>
-                                                                        <option value="table 2">table 2</option>
-                                                                        <option value="table 3">table 3</option>
-                                                                        <option value="table 4">table 4</option>
-                                                                        <option value="table 5">table 5</option>
-                                                                        <option value="table 6">table 6</option>
-								</select>
-								
-								<br>
-                                                                <button class="btn btn bg-light">Afficher</button>
-
-							 </form>	
-								
-							</div>
-						</div>
-					</div></section>
+					
 					<section class="col-1-2"><div class="wrap-col">
 						<div class="box">
 							<div>
-								<h2><span>Addition</span></h2>
-								<table class="table table-dark table-striped">
-									<thead>
-									  <tr>
-										<th scope="col">Plat</th>
-										<th scope="col" >Prix</th>
-										<th scope="col">Quantité</th>
-									  </tr>
-									</thead>
-									<tbody>
-                                                                            <% 
-                                                                                double total=0;
-                                                                                Addition add = (Addition)request.getAttribute("addition");
-                                                                                for(int i=0;i<add.getPrix_unitaire().length;i++){
-                                                                            %>
-									  <tr>
-										<th scope="row"><%=add.getNom_produit()[i]%></th>
-										<td ><%=add.getQuantite()[i]%></td>
-										<td ><%=add.getPrix_unitaire()[i]%></td>
-									  </tr>
-                                                                          
-									  <%   total+= add.getQuantite()[i] * add.getPrix_unitaire()[i]; }
-                                                                            %>
-									</tbody>
+                                                            <form action="Inscription" method="get">
+                                                                <h2><span>Nom d'utilisateur</span></h2>
+                                                                <input type="text" name="username" class="form-control"/>
+                                                                <h2><span>Mot de passe</span></h2>
+                                                                <input type="password" name="password" class="form-control"/>
+                                                              
+                                                                <h2><span>Profil</span></h2>
+                                                                <select type="text" name="profil" class="form-select">
+                                                                    <option value=""></option>
+                                                                    
+                                                                </select>
+                                                                
 
-								  </table>
-								  <h2><span>Total: </span><%=total%></h2>
-
+                                                                    <button class="btn btn-warning">Inscrire</button>
+                                                             </form> 
 							</div>
 							
 						</div>
 					</div></section>
+                                    
+                                   
 				
 					
 

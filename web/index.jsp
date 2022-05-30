@@ -59,7 +59,7 @@
 			<div class="main zerogrid">
 <!-- header -->
 				<header>
-					<h1  id="logo"><a href="index.html"><img src="images/kalitao.png"/></a></h1>
+					<h1  id="logo"><a href="index.html"><img src="images/logo.png"/></a></h1>
 				</header>
 <!-- / header -->
 <!-- content -->
@@ -85,7 +85,7 @@
 				<input type="password" class="form-control" name="password">
 				</div>
 				<div class="mb-5">
-				<button type="submit" class="btn btn-warning">Se connecter</button>
+				<button type="submit" class="btn btn-danger">Se connecter</button>
 
 				</div>
 			</form>
